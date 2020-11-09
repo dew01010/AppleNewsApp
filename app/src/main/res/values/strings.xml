@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Apple News </string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="more_info">more details</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="no_internet">No Internet Connection !!</string>
+    <string name="news_frag">News Frag</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="web_frag">Web frag</string>
+</resources>
