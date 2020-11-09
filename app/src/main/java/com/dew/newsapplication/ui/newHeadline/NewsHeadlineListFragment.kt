@@ -195,8 +195,7 @@ class NewsHeadlineListFragment : BaseFrag(), NewsHeadlineAdapter.NewsHeadlineAda
         if (!AppPref.isHelpVideoChecked(requireContext())) {
             binding.helpContainer.visibility=View.VISIBLE
             binding.helpContainer.visibility=View.VISIBLE
-            childFragmentManager.beginTransaction().add(R.id.help_container,HelpFragment.newInstance(
-                "https://firebasestorage.googleapis.com/v0/b/videoplayer-bb7be.appspot.com/o/This%20is%20iPhone%2012%20Pro%20%E2%80%94%20Apple.mp4?alt=media&token=b923b705-f76d-43ec-9916-8c2e8e5212cd"
+            childFragmentManager.beginTransaction().replace(R.id.help_container,HelpFragment.newInstance("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
             ),"helpFrag").commit()        }else{
             binding.helpContainer.visibility=View.GONE
         }

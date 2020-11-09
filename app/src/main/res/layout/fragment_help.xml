@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="230dp"
+    android:layout_height="200dp"
     android:layout_margin="@dimen/margin_10dp"
     app:cardCornerRadius="@dimen/margin_10dp"
     tools:context=".ui.HelpFragment">
 
     <VideoView
         android:id="@+id/video_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible" />
 
@@ -31,7 +31,7 @@
         android:layout_height="20dp"
         android:layout_marginLeft="@dimen/margin_10dp"
         android:layout_marginTop="@dimen/margin_10dp"
-        android:text="iPhone 12 Pro  "
+        android:text="Advertisement"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"

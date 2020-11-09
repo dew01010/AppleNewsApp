@@ -9,6 +9,7 @@ import com.dew.newsapplication.R
 * this is base Fragment that handle all common methods  while calling api that take work with fragment life cycle */
 open class BaseFrag:Fragment() {
     private lateinit var loadingDialog: LoadingDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loadingDialog= LoadingDialog(requireContext())

@@ -1,5 +1,7 @@
 package com.dew.newsapplication.ui
 
+import android.media.MediaPlayer
+import android.media.MediaSync
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -82,6 +84,9 @@ class HelpFragment : Fragment() {
             }, 1000, 1000, TimeUnit.MICROSECONDS)
             binding.videoView.start()
         }
+
+        // handle error pop inCase  not able to play video
+        binding.videoView.setOnErrorListener { p0, p1, p2 -> true }
     }
 
 
