@@ -5,9 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.AbsListView
 import android.widget.MediaController
 import androidx.core.os.bundleOf
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -47,7 +49,6 @@ class NewsHeadlineListFragment : BaseFrag(), NewsHeadlineAdapter.NewsHeadlineAda
     private lateinit var list: ArrayList<ArticleInfo?>
     private var isScrolling: Boolean = false
     private var newsSource: String? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -191,13 +192,26 @@ class NewsHeadlineListFragment : BaseFrag(), NewsHeadlineAdapter.NewsHeadlineAda
         binding.recyclerView.addOnScrollListener(listener)
     }
 
-    private fun showHelpVideo(){
+    private fun showHelpVideo() {
         if (!AppPref.isHelpVideoChecked(requireContext())) {
-            binding.helpContainer.visibility=View.VISIBLE
-            binding.helpContainer.visibility=View.VISIBLE
-            childFragmentManager.beginTransaction().replace(R.id.help_container,HelpFragment.newInstance("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
-            ),"helpFrag").commit()        }else{
-            binding.helpContainer.visibility=View.GONE
+          val  helpFragment = HelpFragment.newInstance("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")
+            binding.helpContainer.visibility = View.VISIBLE
+            binding.helpContainer.visibility = View.VISIBLE
+            childFragmentManager.beginTransaction()
+                .replace(R.id.help_container, helpFragment!!, "helpFrag").commit()
+            setEndPositionOfScrollView(helpFragment)
+        } else {
+            binding.helpContainer.visibility = View.GONE
         }
+    }
+
+    private fun setEndPositionOfScrollView(helpFragment:HelpFragment){
+        binding.nestedScroll.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (v.getChildAt(0).bottom <=(binding.nestedScroll.height +scrollY)) {
+                helpFragment.resumeVideo()
+            }else{
+                helpFragment.pauseVideo()
+            }
+        })
     }
 }

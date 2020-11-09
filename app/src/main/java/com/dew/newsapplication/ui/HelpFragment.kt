@@ -54,6 +54,13 @@ class HelpFragment : Fragment() {
         return binding.root
     }
 
+    fun pauseVideo() {
+        binding.videoView.pause()
+    }
+    fun resumeVideo() {
+        binding.videoView.start()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         playHelpVideo(url)
@@ -71,8 +78,7 @@ class HelpFragment : Fragment() {
 
     private fun playHelpVideo(url: String) {
         binding.pb.visibility = View.VISIBLE
-        val mediaController = MediaController(requireContext())
-        binding.videoView.setMediaController(mediaController)
+        binding.videoView.setMediaController( MediaController(requireContext()))
         binding.videoView.setVideoPath(url)
         binding.videoView.seekTo(currentPosition)
         binding.videoView.setOnPreparedListener {
